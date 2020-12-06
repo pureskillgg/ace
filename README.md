@@ -1,6 +1,5 @@
 # JavaScript Module Package Skeleton
 
-[![npm](https://img.shields.io/npm/v/@pureskillgg/makenew-jsmodule.svg)](https://www.npmjs.com/package/@pureskillgg/makenew-jsmodule)
 ![main](https://github.com/pureskillgg/makenew-jsmodule/workflows/main/badge.svg)
 
 Package skeleton for a JavaScript module.
