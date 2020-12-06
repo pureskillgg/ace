@@ -1,5 +1,5 @@
 {
-  "name": "@makenew/jsmodule",
+  "name": "@pureskillgg/makenew-jsmodule",
   "version": "4.0.0",
   "description": "Package skeleton for a JavaScript module.",
   "main": "dist/index.js",
@@ -8,9 +8,9 @@
   "keywords": [
     "node"
   ],
-  "homepage": "https://github.com/makenew/jsmodule",
-  "bugs": "https://github.com/makenew/jsmodule/issues",
-  "repository": "makenew/jsmodule",
+  "homepage": "https://github.com/pureskillgg/makenew-jsmodule",
+  "bugs": "https://github.com/pureskillgg/makenew-jsmodule/issues",
+  "repository": "pureskillgg/makenew-jsmodule",
   "license": "MIT",
   "author": {
     "name": "Evan Sosenko",

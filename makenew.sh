@@ -36,7 +36,7 @@ stage_env () {
   git branch --unset-upstream
   git remote rm origin
   echo
-  git rm -f makenew.sh
+  git rm -f pureskillgg.sh
   echo
   echo 'Staging changes.'
   git add --all
@@ -45,7 +45,7 @@ stage_env () {
   echo
 }
 
-makenew () {
+pureskillgg () {
   echo 'Answer all prompts.'
   echo 'There are no defaults.'
   echo 'Example values are shown in parentheses.'
@@ -66,15 +66,15 @@ makenew () {
   find_replace "s/Package skeleton for a JavaScript module\./${mk_description}/g"
   find_replace "s/Evan Sosenko/${mk_author}/g"
   find_replace "s/razorx@evansosenko\.com/${mk_email}/g"
-  find_replace "s|@makenew/jsmodule|${mk_slug}|g"
-  find_replace "s|makenew/jsmodule|${mk_user}/${mk_repo}|g"
-  find_replace "s|jsmodule|${mk_repo}|g"
+  find_replace "s|@pureskillgg/makenew-jsmodule|${mk_slug}|g"
+  find_replace "s|pureskillgg/makenew-jsmodule|${mk_user}/${mk_repo}|g"
+  find_replace "s|makenew-jsmodule|${mk_repo}|g"
 
   echo
   echo 'Replacing boilerplate.'
 }
 
 check_env 'git read sed xargs'
-makenew
+pureskillgg
 stage_env
 exit
