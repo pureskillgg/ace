@@ -65,7 +65,7 @@ pureskillgg () {
   find_replace "s/JavaScript Module Package Skeleton/${mk_title}/g"
   find_replace "s/Package skeleton for a JavaScript module\./${mk_description}/g"
   find_replace "s/Evan Sosenko/${mk_author}/g"
-  find_replace "s/razorx@evansosenko\.com/${mk_email}/g"
+  find_replace "s/evan@pureskill\.gg/${mk_email}/g"
   find_replace "s|@pureskillgg/makenew-jsmodule|${mk_slug}|g"
   find_replace "s|pureskillgg/makenew-jsmodule|${mk_user}/${mk_repo}|g"
   find_replace "s|makenew-jsmodule|${mk_repo}|g"
