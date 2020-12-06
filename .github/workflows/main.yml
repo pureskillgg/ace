@@ -21,6 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2-beta
         with:
+          node-version: ${{ matrix.node }}
           registry-url: https://npm.pkg.github.com
       - name: Get yarn cache directory
         id: yarn-cache-dir
@@ -60,6 +61,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2-beta
         with:
+          node-version: ${{ matrix.node }}
           registry-url: https://npm.pkg.github.com
       - name: Get yarn cache directory
         id: yarn-cache-dir
@@ -99,6 +101,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2-beta
         with:
+          node-version: ${{ matrix.node }}
           registry-url: https://npm.pkg.github.com
       - name: Get yarn cache directory
         id: yarn-cache-dir

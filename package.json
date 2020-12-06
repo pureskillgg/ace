@@ -28,10 +28,10 @@
     "test": "nyc ava",
     "test:update": "ava --update-snapshots",
     "test:watch": "ava --watch",
-    "test:inspect": "node --inspect node_modules/ava/profile",
-    "test:inspect:watch": "nodemon --inspect node_modules/ava/profile",
-    "lint": "gulp lint",
-    "lint:watch": "gulp watch",
+    "test:debug": "ava debug --break",
+    "lint": "npm-run-all lint:*",
+    "lint:prettier": "prettier --check --ignore-path .gitignore '**/*.(js|json|graphql)'",
+    "lint:js": "eslint --ignore-path .gitignore --ext .js .",
     "clean": "del dist",
     "build": "npm-run-all --parallel build:*",
     "prebuild": "npm-run-all clean",
@@ -40,63 +40,14 @@
     "preversion": "npm-run-all lint test build",
     "postversion": "git push --follow-tags",
     "example": "babel-node examples",
-    "example:watch": "nodemon --exec babel-node examples",
     "example:inspect": "babel-node --inspect examples",
-    "example:inspect:watch": "nodemon --exec babel-node --inspect examples",
-    "pretty": "prettier --ignore-path .gitignore --write '**/*.(js|json|graphql)'",
     "format": "npm-run-all --serial pretty format:*",
-    "format:js": "standard --fix",
+    "format:prettier": "prettier --write --ignore-path .gitignore '**/*.(js|json|graphql)'",
+    "format:js": "eslint --ignore-path .gitignore --fix --ext .js .",
     "report": "nyc report"
   },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
-    ]
-  },
-  "ava": {
-    "files": [
-      "**/*.spec.js",
-      "!dist/**/*",
-      "!package/**/*"
-    ],
-    "require": [
-      "@babel/register"
-    ]
-  },
-  "nyc": {
-    "exclude": [
-      "**/index.js",
-      "dist/**/*.js",
-      "package/**/*.js",
-      "examples/**/*.js",
-      "**/*.spec.js"
-    ],
-    "reporter": [
-      "html",
-      "lcov",
-      "text"
-    ]
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "**/*.spec.js",
-      "test/",
-      "tmp/"
-    ]
-  },
   "engines": {
-    "node": ">=10.13.0"
-  },
-  "resolutions": {
-    "eslint": "^7.12.1",
-    "standard": "^16.0.2"
+    "node": ">=12.13.0"
   },
   "dependencies": {},
   "devDependencies": {
@@ -108,14 +59,12 @@
     "@meltwater/examplr": "^5.0.0",
     "ava": "^3.3.0",
     "del-cli": "^3.0.0",
-    "eslint": "^7.12.1",
-    "gulp": "^4.0.0",
-    "gulp-cli": "^2.0.0",
-    "gulp-jsonlint": "^1.1.2",
-    "gulp-standard": "^14.0.0",
-    "gulp-watch": "^5.0.0",
-    "gulplog": "^1.0.0",
-    "nodemon": "^2.0.1",
+    "eslint": "^7.4.0",
+    "eslint-config-standard": "^16.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^5.0.0",
     "npm-run-all": "^4.1.2",
     "nyc": "^15.0.0",
     "prettier": "^2.0.2",
