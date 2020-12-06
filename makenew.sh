@@ -57,8 +57,8 @@ pureskillgg () {
   read -p '> GitHub user or organization name (my-user): ' mk_user
   read -p '> GitHub repository name (my-repo): ' mk_repo
 
-  sed_delete README.md '10,104d'
-  sed_insert README.md '10i' 'TODO'
+  sed_delete README.md '9,103d'
+  sed_insert README.md '9i' 'TODO'
 
   find_replace "s/\"version\": \".*\"/\"version\": \"0.0.0\"/g"
   find_replace "s/0\.0\.0\.\.\./0.0.1.../g"
