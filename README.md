@@ -232,7 +232,7 @@ To submit a patch:
 
 ## License
 
-This npm package is Copyright (c) 2019-2021 FPS Critic, LLC.
+This npm package is Copyright (c) 2019-2021 FPS Critic, Inc.
 
 ## Warranty
 
