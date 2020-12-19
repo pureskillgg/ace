@@ -106,13 +106,14 @@ _GitHub Actions should already be configured: this section is for reference only
 
 The following repository secrets must be set on [GitHub Actions]:
 
-- None.
+- `GH_TOKEN`: A personal access token to read and write packages.
 
 These must be set manually.
 
 ### Secrets for GitHub Action to Cut Version (Optional)
 
-The version GitHub action requires a user with write access to the repository.
+The version GitHub action requires a user with write access to the repository
+including access to read and write packages.
 Set these additional secrets to enable the action:
 
 - `GH_TOKEN`: A personal access token for the user.
