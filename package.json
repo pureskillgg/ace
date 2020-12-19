@@ -1,7 +1,7 @@
 {
-  "name": "@pureskillgg/makenew-jsmodule",
-  "version": "2.0.3",
-  "description": "Package skeleton for a JavaScript module.",
+  "name": "@pureskillgg/ace",
+  "version": "0.0.0",
+  "description": "Loads and caches configuration and secrets from AWS services.",
   "type": "module",
   "main": "dist/index.cjs",
   "exports": {
@@ -13,9 +13,9 @@
   "keywords": [
     "node"
   ],
-  "homepage": "https://github.com/pureskillgg/makenew-jsmodule",
-  "bugs": "https://github.com/pureskillgg/makenew-jsmodule/issues",
-  "repository": "pureskillgg/makenew-jsmodule",
+  "homepage": "https://github.com/pureskillgg/ace",
+  "bugs": "https://github.com/pureskillgg/ace/issues",
+  "repository": "pureskillgg/ace",
   "license": "SEE LICENSE IN LICENSE.txt",
   "author": {
     "name": "Evan Sosenko",
