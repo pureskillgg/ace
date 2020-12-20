@@ -55,7 +55,10 @@
     "node": ">=12.13.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.814.0"
+    "@meltwater/mlabs-logger": "^6.1.1",
+    "@meltwater/phi": "^3.9.1",
+    "aws-sdk": "^2.814.0",
+    "cache-manager": "^3.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
