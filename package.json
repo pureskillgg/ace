@@ -54,7 +54,9 @@
   "engines": {
     "node": ">=12.13.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "aws-sdk": "^2.814.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.1",
