@@ -5,6 +5,6 @@ export default () => ({
 })
 
 const isBabelRequired = () => {
-  const [majorVer] = process.versions.node.split()
+  const [majorVer] = process.versions.node.split('.')
   return Number(majorVer) < 14
 }
