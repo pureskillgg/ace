@@ -2,12 +2,12 @@ import path from 'path'
 
 import examplr from '@meltwater/examplr'
 
-import todo from './todo.js'
+import { getLocalConfig } from './get.js'
 
 const { createExamples } = examplr
 
 const examples = {
-  todo
+  getLocalConfig
 }
 
 const envVars = ['LOG_LEVEL', 'LOG_FILTER', 'LOG_OUTPUT_MODE']
