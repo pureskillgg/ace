@@ -1,6 +1,7 @@
 {
   "plugins": [
-    ["add-import-extension", { "extension": "cjs", "replace": true }]
+    ["add-import-extension", { "extension": "cjs", "replace": true }],
+    ["@babel/plugin-proposal-optional-chaining"]
   ],
   "presets": [
     [
