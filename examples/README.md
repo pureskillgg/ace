@@ -1,7 +1,5 @@
 # Examples
 
-<!--- TODO: Update all uses of todo with added example. -->
-
 ## Running Examples Locally
 
 ### Local configuration
@@ -33,13 +31,13 @@ $ yarn run example
 Run provided examples with, e.g.,
 
 ```
-$ yarn run example todo
+$ yarn run example get-local-config
 ```
 
 Pass arguments to examples with
 
 ```
-$ yarn run example todo false
+$ yarn run example get-local-config foo
 ```
 
 #### Debugging examples
@@ -47,7 +45,7 @@ $ yarn run example todo false
 Debug examples with, e.g.,
 
 ```
-$ yarn run example:inspect todo
+$ yarn run example:inspect get-local-config
 ```
 
 For examples which run a single process and then exit,

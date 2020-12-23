@@ -54,11 +54,19 @@
   "engines": {
     "node": ">=12.13.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@meltwater/mlabs-logger": "^6.1.1",
+    "@meltwater/phi": "^3.9.1",
+    "aws-sdk": "^2.814.0",
+    "cache-manager": "^3.4.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.1",
+    "@babel/eslint-parser": "^7.12.1",
     "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+    "@babel/plugin-syntax-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@meltwater/examplr": "^5.0.1",
@@ -72,6 +80,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "npm-run-all": "^4.1.2",
     "nyc": "^15.0.0",
-    "prettier": "^2.0.2"
+    "prettier": "^2.0.2",
+    "testdouble": "^3.16.1"
   }
 }
