@@ -960,13 +960,13 @@
     debug "^4.0.1"
     pino "^6.3.2"
 
-"@meltwater/phi@^3.9.1":
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/@meltwater/phi/-/phi-3.9.1.tgz#d5e05f00e6b84a26dd9fbcfc4a49b8f1fa063d47"
-  integrity sha512-Ps0AUXh4YinQZPuhh695pIUlfsfmPSYmpvxcalDlMoQnJ0nCHLRvRdq7mig03XVRD9TRM1/uTZAsggoVR9xPwg==
+"@meltwater/phi@^3.10.0":
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/@meltwater/phi/-/phi-3.10.0.tgz#d05a9235ed1d79ee727f683c3699a97558d592a6"
+  integrity sha512-ojMaSpdD3L5uBJ8PaLcEr//RGjh0R10BDelWYewEDuCXNHbdQFvapkH9kSBvclobror0kFbrYwKFlvUg7R5vnw==
   dependencies:
     ramda "~0.27.1"
-    ramda-adjunct "~2.28.0"
+    ramda-adjunct "~2.29.0"
 
 "@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents":
   version "2.1.8-no-fsevents"
@@ -4547,10 +4547,10 @@ quick-lru@^4.0.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
   integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
 
-ramda-adjunct@~2.28.0:
-  version "2.28.0"
-  resolved "https://registry.yarnpkg.com/ramda-adjunct/-/ramda-adjunct-2.28.0.tgz#66ea060dab074febdfb23ce80041ca629da49466"
-  integrity sha512-RIAremVuR/T0MyhuICf2szKdxEDhSuJlS4gpu5lD0dgnYtbC3ilPQuKEqh2Z+zcIqoF2kGUc5xbPBOEBKogwwA==
+ramda-adjunct@~2.29.0:
+  version "2.29.0"
+  resolved "https://registry.yarnpkg.com/ramda-adjunct/-/ramda-adjunct-2.29.0.tgz#64925507686561e2d64ecbb1d8e4dacf39972c22"
+  integrity sha512-hhpy/Uo4J0dePqNvLadtUuk/1ns95YC9cZARJUgak1o3JSAAkdalVrniX7eQPtcUQDp5LYO3Jx58WbqBJYA+aA==
 
 ramda@~0.27.1:
   version "0.27.1"
