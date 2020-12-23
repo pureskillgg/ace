@@ -950,10 +950,10 @@
     pino "^6.3.2"
     pino-pretty "^4.0.0"
 
-"@meltwater/mlabs-logger@^6.1.1":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@meltwater/mlabs-logger/-/mlabs-logger-6.1.1.tgz#867565cdb17ae2b3811403a20151d3acd9095104"
-  integrity sha512-V3K5NwOTCAFTxdv7/7cNOiS1gDvw8igfXEEkLecbyzZ2kgXUo6XFZ7CuUCr4awUsLQ4zlNT9+OB4HnTftwS1PA==
+"@meltwater/mlabs-logger@^7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@meltwater/mlabs-logger/-/mlabs-logger-7.0.1.tgz#93f22e17dda419d853d6700669645f88b1f5b329"
+  integrity sha512-X0CcokwJu56DKyUcXiw6N9V/CymN8vFCIy2QJ3A0lb+Fiv9sHahBpBk7hGghA03L5WLi0OCSV+7BfvN3zQ7MwA==
   dependencies:
     "@meltwater/examplr" "^5.0.0"
     bunyan-formatter "^1.0.0"
