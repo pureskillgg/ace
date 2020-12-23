@@ -44,6 +44,7 @@
     "build:lib": "babel --source-maps --out-file-extension .cjs --ignore='**/*.spec.js' --out-dir dist/lib lib",
     "build:root": "babel --source-maps --out-file-extension .cjs --out-dir .dist index.js",
     "build:spec": "babel --source-maps --out-file-extension .cjs --out-dir .dist/lib lib",
+    "build:test": "babel --source-maps --out-file-extension .cjs --out-dir .dist/test test",
     "preversion": "npm-run-all --parallel lint test build",
     "postversion": "git push --follow-tags",
     "example": "node examples",
