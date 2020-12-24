@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@meltwater/mlabs-logger": "^7.0.1",
-    "@meltwater/phi": "^3.10.0",
+    "@meltwater/phi": "^4.0.0-alpha.3",
     "aws-sdk": "^2.814.0",
     "cache-manager": "^3.4.0"
   },

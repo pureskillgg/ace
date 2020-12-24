@@ -960,10 +960,10 @@
     debug "^4.0.1"
     pino "^6.3.2"
 
-"@meltwater/phi@^3.10.0":
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/@meltwater/phi/-/phi-3.10.0.tgz#d05a9235ed1d79ee727f683c3699a97558d592a6"
-  integrity sha512-ojMaSpdD3L5uBJ8PaLcEr//RGjh0R10BDelWYewEDuCXNHbdQFvapkH9kSBvclobror0kFbrYwKFlvUg7R5vnw==
+"@meltwater/phi@^4.0.0-alpha.3":
+  version "4.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@meltwater/phi/-/phi-4.0.0-alpha.3.tgz#c407ba0f27ae3ce84f00f06b179427c199387268"
+  integrity sha512-QL7GTA1j4/I04ZcPVzJA8mv2TNbuBtxrp+xJM347ltKvdRqaxpU1DAOxZdixmXpJiryKAHVfEt/bYOZ00/sfqQ==
   dependencies:
     ramda "~0.27.1"
     ramda-adjunct "~2.29.0"
