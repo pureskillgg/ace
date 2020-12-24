@@ -1,10 +1,8 @@
 import path from 'path'
 
-import examplr from '@meltwater/examplr'
+import { createExamples } from '@meltwater/examplr'
 
 import { getLocalConfig } from './get.js'
-
-const { createExamples } = examplr
 
 const examples = {
   getLocalConfig
