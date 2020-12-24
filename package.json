@@ -59,7 +59,7 @@
     "node": ">=12.13.0"
   },
   "dependencies": {
-    "@meltwater/mlabs-logger": "^8.0.0-alpha.1",
+    "@meltwater/mlabs-logger": "^8.0.0-rc.0",
     "@meltwater/phi": "^4.0.0-rc.0",
     "aws-sdk": "^2.814.0",
     "cache-manager": "^3.4.0"
