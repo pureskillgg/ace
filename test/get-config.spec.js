@@ -1,9 +1,7 @@
 import test from 'ava'
-import mlabsLogger from '@meltwater/mlabs-logger'
+import { createLogger } from '@meltwater/mlabs-logger'
 
 import { getConfig, localString } from '../index.js'
-
-const { createLogger } = mlabsLogger
 
 test('retuns empty config', async (t) => {
   const data = await getConfig()
