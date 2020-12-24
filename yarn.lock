@@ -940,7 +940,7 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
   integrity sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
 
-"@meltwater/examplr@^6.0.0", "@meltwater/examplr@^6.0.0-alpha.0":
+"@meltwater/examplr@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@meltwater/examplr/-/examplr-6.0.0.tgz#fe21f2fccf596194d68e232836827c10f90d3cb1"
   integrity sha512-SG8jzxN1KYVr+GtwnMViAnP7YJ3JyJeAzSgf6IjQmZJfHvv04ylO8y/CBKYqq96HLSiA4tHK26+noBzjzQ4G9g==
@@ -950,20 +950,20 @@
     pino "^6.3.2"
     pino-pretty "^4.0.0"
 
-"@meltwater/mlabs-logger@^8.0.0-rc.0":
-  version "8.0.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@meltwater/mlabs-logger/-/mlabs-logger-8.0.0-rc.0.tgz#fb7b0df3a33802b1573a48bb6f70dbb45f538460"
-  integrity sha512-SaHMiAhxF1+2OvcNXsipS0pNZA2J50dJbmXJVWjtcK4qSHIp1A2XdtqqguJTB4j5eJ3gRcOhoOjjkppk2AQxzg==
+"@meltwater/mlabs-logger@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@meltwater/mlabs-logger/-/mlabs-logger-8.0.0.tgz#8f854935d5cb896e8ec74f38630bfc3caf0d5aa8"
+  integrity sha512-OHQJr/gQhojLNWLE0hAUnavRVzUYhezfFXdIa/+isjXfVH9ktjw4TsHnSE+j8j11kOdGEjD6mdXvUbVHLqaoYw==
   dependencies:
-    "@meltwater/examplr" "^6.0.0-alpha.0"
+    "@meltwater/examplr" "^6.0.0"
     bunyan-formatter "^1.0.0"
     debug "^4.0.1"
     pino "^6.3.2"
 
-"@meltwater/phi@^4.0.0-rc.0":
-  version "4.0.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@meltwater/phi/-/phi-4.0.0-rc.0.tgz#96c27d4c4703b11b0b0709c0951eb2cb3a611568"
-  integrity sha512-pDFWfqd5tvueFl/KYgPu+SISo/otkx5iCWRmfQx9kIx1fxP/WVvJoFu8nVy/cipotaIXoEwbbUwvEbjrbPovgA==
+"@meltwater/phi@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@meltwater/phi/-/phi-4.0.0.tgz#c8b3956e9eeb9343a67ddec17168386216351b5f"
+  integrity sha512-1Sdtxz5KTR0q3ikehWJcxdYYx2Cw7UYXBDdinVKJnKIETXoTu42aG8f/FMrBFVye9eP8Ny5B9ooESY8J2F2KhQ==
   dependencies:
     ramda "~0.27.1"
     ramda-adjunct "~2.29.0"
