@@ -53,7 +53,7 @@ Bootstrap a new JavaScript module in five minutes or less.
    ```
 3. Run
    ```
-   $ ./pureskillgg.sh
+   $ ./makenew.sh
    ```
    This will replace the boilerplate, delete itself,
    remove the git remote, remove upstream tags,
@@ -62,7 +62,7 @@ Bootstrap a new JavaScript module in five minutes or less.
 5. Review, commit, and push the changes to GitHub with
    ```
    $ git diff --cached
-   $ git commit -m "Replace pureskillgg boilerplate"
+   $ git commit -m "Replace makenew boilerplate"
    $ git remote add origin git@github.com:<user>/<new-node-lib>.git
    $ git push -u origin master
    ```
