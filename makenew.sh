@@ -50,14 +50,11 @@ makenew () {
   echo 'There are no defaults.'
   echo 'Example values are shown in parentheses.'
   read -p '> Package title (My Package): ' mk_title
-  read -p '> Package name (my-package): ' mk_pkg
+  read -p '> Package name (my-package): ' mk_slug
   read -p '> Short package description (Foos and bars.): ' mk_description
-  read -p '> Author name (Linus Torvalds): ' mk_author
-  read -p '> Author email (linus@example.com): ' mk_email
-  read -p '> GitHub repository name (my-repo): ' mk_repo
 
   mk_user="pureskillgg"
-  mk_slug="@pureskillgg/${mk_pkg}"
+  mk_pkg="@pureskillgg/${mk_slug}"
 
   sed_delete README.md '9,101d'
   sed_insert README.md '9i' 'TODO'
@@ -66,11 +63,9 @@ makenew () {
   find_replace "s/0\.0\.0\.\.\./0.0.1.../g"
   find_replace "s/JavaScript Module Package Skeleton/${mk_title}/g"
   find_replace "s/Package skeleton for a JavaScript module\./${mk_description}/g"
-  find_replace "s/Evan Sosenko/${mk_author}/g"
-  find_replace "s/evan@pureskill\.gg/${mk_email}/g"
-  find_replace "s|@pureskillgg/makenew-jsmodule|${mk_slug}|g"
-  find_replace "s|pureskillgg/makenew-jsmodule|${mk_user}/${mk_repo}|g"
-  find_replace "s|makenew-jsmodule|${mk_repo}|g"
+  find_replace "s|@pureskillgg/makenew-jsmodule|${mk_pkg}|g"
+  find_replace "s|pureskillgg/makenew-jsmodule|${mk_user}/${mk_slug}|g"
+  find_replace "s|makenew-jsmodule|${mk_slug}|g"
 
   echo
   echo 'Replacing boilerplate.'
