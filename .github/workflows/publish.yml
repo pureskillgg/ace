@@ -47,8 +47,6 @@ jobs:
         run: yarn install --frozen-lockfile --non-interactive
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
-      - name: Build
-        run: yarn run build
       - name: Publish ${{ steps.version.outputs.name }}@${{ steps.version.outputs.current }}
         if: ${{ endsWith(github.ref, format('v{0}', steps.published-version.outputs.version)) == false }}
         run: npm publish --access restricted
