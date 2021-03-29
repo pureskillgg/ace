@@ -27,7 +27,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Publish ${{ steps.version.outputs.name }}@${{ steps.version.outputs.current }}
-        if: ${{ endsWith(github.ref, format('v{0}', steps.published-version.outputs.version)) == false }}
+        if: ${{ endsWith(github.ref, format('v{0}', steps.version.outputs.published)) == false }}
         run: npm publish --access restricted
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
