@@ -6,8 +6,6 @@
 # https://github.com/github/gitignore
 
 # Build directories
-.dist
-dist
 package
 
 # Local config
