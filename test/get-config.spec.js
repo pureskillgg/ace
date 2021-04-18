@@ -38,3 +38,17 @@ test('throws error if missing alias', async (t) => {
     { message: /alias/i }
   )
 })
+
+test('uses key directly if aliases is null', async (t) => {
+  const localParameters = { FOO: 'one', BAR: 'two' }
+  const data = await getConfig({
+    parameters: {
+      foo: localString('FOO'),
+      bar: localString('BAR')
+    },
+    aliases: null,
+    localParameters,
+    log: createLogger({ t })
+  })
+  t.deepEqual(data, { foo: 'one', bar: 'two' })
+})
