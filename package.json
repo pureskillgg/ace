@@ -1,6 +1,6 @@
 {
   "name": "@pureskillgg/ace",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Loads and caches configuration and secrets from AWS services.",
   "type": "module",
   "main": "index.js",
