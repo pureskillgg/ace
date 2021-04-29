@@ -56,7 +56,7 @@ makenew () {
   mk_user="pureskillgg"
   mk_pkg="@pureskillgg/${mk_slug}"
 
-  sed_delete README.md '9,99d'
+  sed_delete README.md '9,102d'
   sed_insert README.md '9i' 'TODO'
 
   find_replace "s/\"version\": \".*\"/\"version\": \"0.0.0\"/g"

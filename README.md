@@ -13,6 +13,7 @@ Bootstrap a new JavaScript module in five minutes or less.
 - [Node.js]'s [npm] package structure.
 - Fast, reliable, and secure dependency management with [Yarn].
 - Examples with configurable options and arguments powered by [examplr].
+- Published [documentation.js] to [GitHub Pages].
 - Linting with the [JavaScript Standard Style] using [ESLint].
 - [Prettier] code.
 - Futuristic debuggable unit testing with [AVA].
@@ -26,6 +27,7 @@ Bootstrap a new JavaScript module in five minutes or less.
 [ESLint]: https://eslint.org/
 [EditorConfig]: https://editorconfig.org/
 [GitHub Actions]: https://github.com/features/actions
+[GitHub Pages]: https://pages.github.com/
 [Istanbul]: https://istanbul.js.org/
 [JavaScript Standard Style]: https://standardjs.com/
 [Keep a CHANGELOG]: https://keepachangelog.com/
@@ -33,6 +35,7 @@ Bootstrap a new JavaScript module in five minutes or less.
 [Prettier]: https://prettier.io/
 [Shields.io]: https://shields.io/
 [Yarn]: https://yarnpkg.com/
+[documentation.js]: https://documentation.js.org/
 [examplr]: https://github.com/meltwater/node-examplr
 [npm]: https://www.npmjs.com/
 [nyc]: https://github.com/istanbuljs/nyc
@@ -202,7 +205,7 @@ These must be set manually.
 
 ### Secrets for Optional GitHub Actions
 
-The version and format GitHub actions
+The docs, version, and format GitHub actions
 require a user with write access to the repository
 including access to read and write packages.
 Set these additional secrets to enable the action:
