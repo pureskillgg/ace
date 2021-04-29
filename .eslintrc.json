@@ -9,6 +9,7 @@
     }
   },
   "rules": {
+    "valid-jsdoc": "error",
     "space-before-function-paren": "off"
   }
 }
