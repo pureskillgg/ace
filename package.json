@@ -54,7 +54,6 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
-    "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@meltwater/examplr": "^6.0.0",
     "ava": "^3.3.0",
     "documentation": "^13.2.5",
