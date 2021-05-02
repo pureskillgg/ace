@@ -112,7 +112,7 @@ These must be set manually.
 
 ### Secrets for Optional GitHub Actions
 
-The version and format GitHub actions
+The docs, version, and format GitHub actions
 require a user with write access to the repository
 including access to read and write packages.
 Set these additional secrets to enable the action:
