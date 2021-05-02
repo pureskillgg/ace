@@ -1,6 +1,6 @@
 {
   "name": "@pureskillgg/makenew-jsmodule",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Package skeleton for a JavaScript module.",
   "type": "module",
   "main": "index.js",
