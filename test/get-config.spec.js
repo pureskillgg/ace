@@ -22,31 +22,14 @@ test('retuns config', async (t) => {
   t.deepEqual(data, { foo: 'one', bar: 'two' })
 })
 
-test('throws error if missing alias', async (t) => {
-  const localParameters = { alpha: 'one', beta: 'two' }
-  await t.throwsAsync(
-    () =>
-      getConfig({
-        parameters: {
-          foo: localString('FOO'),
-          bar: localString('BAR')
-        },
-        aliases: { FOO: 'alpha', NOTBAR: 'beta' },
-        localParameters,
-        log: createLogger({ t })
-      }),
-    { message: /alias/i }
-  )
-})
-
-test('uses key directly if aliases is null', async (t) => {
-  const localParameters = { FOO: 'one', BAR: 'two' }
+test('use key directly if alias is missing', async (t) => {
+  const localParameters = { FOO: 'one', beta: 'two' }
   const data = await getConfig({
     parameters: {
       foo: localString('FOO'),
       bar: localString('BAR')
     },
-    aliases: null,
+    aliases: { BAR: 'beta' },
     localParameters,
     log: createLogger({ t })
   })

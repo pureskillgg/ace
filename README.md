@@ -45,7 +45,6 @@ import { localString, ssmString, secretsManagerString, getConfig } from '@puresk
 
 process.env.BUCKET_ARN_SSM_PATH = '/app/bucket_arn'
 process.env.API_KEY_SECRET_ID = '/app/api_key'
-process.env.API_ORIGIN_LOCAL = 'apiOrigin'
 
 const parameters = {
   bucketArn: ssmString('BUCKET_ARN'),
@@ -54,7 +53,7 @@ const parameters = {
 }
 
 const localParameters = {
-  apiOrigin: 'https://example.com'
+  API_ORIGIN: 'https://example.com'
 }
 
 const { bucketId, apiKey, apiOrigin } = await getConfig({
