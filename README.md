@@ -6,7 +6,67 @@ Loads and caches configuration and secrets from AWS services.
 
 ## Description
 
-TODO
+- Resolve configuration from multiple source:
+  - [AWS SSM parameter store].
+  - [AWS Secrets Manager].
+  - Local memory.
+- Structured logging with [Pino] via [mlabs-logger].
+- Cache parameter values with [cache-manager].
+- Parameter key aliases (see usage below).
+
+[AWS SSM parameter store]: https://aws.amazon.com/systems-manager/
+[AWS Secrets Manager]: https://aws.amazon.com/secrets-manager/
+[Pino]: https://getpino.io/
+[mlabs-logger]: https://github.com/meltwater/mlabs-logger
+[cache-manager]: https://github.com/BryanDonovan/node-cache-manager
+
+## Basic Usage
+
+Get configuration from AWS SSM Parameter Store and AWS Secrets Manager.
+
+```js
+import { ssmString, secretsManagerString, getConfig } from '@pureskillgg/ace'
+
+const parameters = {
+  bucketArn: ssmString('/app/bucket_arn'),
+  apiKey: secretsManagerString('/app/api_key')
+}
+
+const { bucketArn, apiKey } = await getConfig({ parameters })
+```
+
+### Advanced Usage
+
+```js
+import { SSMClient } from '@aws-sdk/client-ssm'
+import { SecretsManagerClient } from '@aws-sdk/client-secrets-manager'
+import cacheManager from 'cache-manager'
+import { localString, ssmString, secretsManagerString, getConfig } from '@pureskillgg/ace'
+
+process.env.BUCKET_ARN_SSM_PATH = '/app/bucket_arn'
+process.env.API_KEY_SECRET_ID = '/app/api_key'
+process.env.API_ORIGIN_LOCAL = 'apiOrigin'
+
+const parameters = {
+  bucketArn: ssmString('BUCKET_ARN'),
+  apiKey: secretsManagerString('API_KEY'),
+  apiOrigin: localString('API_ORIGIN')
+}
+
+const localParameters = {
+  apiOrigin: 'https://example.com'
+}
+
+const { bucketId, apiKey, apiOrigin } = await getConfig({
+  parameters,
+  localParameters,
+  aliases: { ...process.env },
+  ssmClient: new SSMClient(),
+  secretsManagerClient: new SecretsManagerClient(),
+  cache: cacheManager.caching(),
+  log: createLogger()
+})
+```
 
 ## Installation
 
