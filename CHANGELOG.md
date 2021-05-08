@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## 1.2.0 / 2021-05-08
 
+### Added
+
+- New provider `EnvProvider` and factory `envString`.
+
 ### Fixed
 
 - Handle missing parameter or secret errors.
