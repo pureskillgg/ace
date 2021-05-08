@@ -56,14 +56,16 @@ const localParameters = {
   API_ORIGIN: 'https://example.com'
 }
 
+const cache = cacheManager.caching()
+
 const { bucketId, apiKey, apiOrigin } = await getConfig({
   parameters,
   localParameters,
   aliases: { ...process.env },
   ssmClient: new SSMClient(),
   secretsManagerClient: new SecretsManagerClient(),
-  cache: cacheManager.caching(),
-  log: createLogger()
+  log: createLogger(),
+  cache
 })
 ```
 
