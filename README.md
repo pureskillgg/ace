@@ -45,15 +45,18 @@ import { localString, ssmString, secretsManagerString, getConfig } from '@puresk
 
 process.env.BUCKET_ARN_SSM_PATH = '/app/bucket_arn'
 process.env.API_KEY_SECRET_ID = '/app/api_key'
+process.env.API_ORIGIN = 'https://example.com'
+process.env.FOO = 'bar'
 
 const parameters = {
   bucketArn: ssmString('BUCKET_ARN'),
   apiKey: secretsManagerString('API_KEY'),
-  apiOrigin: localString('API_ORIGIN')
+  apiOrigin: envString('API_ORIGIN'),
+  name: localString('FOO')
 }
 
 const localParameters = {
-  API_ORIGIN: 'https://example.com'
+  bar: 'baz'
 }
 
 const cache = cacheManager.caching()
