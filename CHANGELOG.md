@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Fixed
 
 - Handle missing parameter or secret errors.
+- Validate after parsing.
 
 ## 1.1.0 / 2021-05-05
 
