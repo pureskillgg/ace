@@ -105,7 +105,7 @@ and summarized under [Releases].
 Add this as a dependency to your project using [npm] with
 
 ```
-$ npm install @makenew/jsmodule
+$ npm install @pureskillgg/makenew-jsmodule
 ```
 
 [npm]: https://www.npmjs.com/
