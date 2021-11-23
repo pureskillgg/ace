@@ -1,0 +1,38 @@
+---
+name: Setup
+description: Setup Node.js and install dependencies.
+
+inputs:
+  node_version:
+    description: The Node.js version
+    required: false
+    default: '16'
+  registry_url:
+    description: The Node.js package registry URL.
+    required: false
+    default: https://npm.pkg.github.com
+  node_auth_token:
+    description: The Node.js auth token
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        cache: npm
+        node-version: ${{ inputs.node_version }}
+        registry-url: ${{ inputs.registry_url }}
+        scope: '@${{ github.repository_owner }}'
+    - name: Install dependencies
+      shell: bash
+      run: npm ci --ignore-scripts
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.node_auth_token }}
+    - name: Rebuild Node.js modules
+      shell: bash
+      run: npm rebuild
+    - name: Run install script
+      shell: bash
+      run: npm run postinstall --if-present

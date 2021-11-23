@@ -4,17 +4,17 @@ set -e
 set -u
 
 find_replace () {
-  git grep --cached -Il '' | xargs sed --posix -i.sedbak -e "$1"
+  git grep --cached -Il '' | xargs sed -i.sedbak -e "$1"
   find . -name "*.sedbak" -exec rm {} \;
 }
 
 sed_insert () {
-  sed --posix -i.sedbak -e "$2\\"$'\n'"$3"$'\n' $1
+  sed -i.sedbak -e "$2\\"$'\n'"$3"$'\n' $1
   rm $1.sedbak
 }
 
 sed_delete () {
-  sed --posix -i.sedbak -e "$2" $1
+  sed -i.sedbak -e "$2" $1
   rm $1.sedbak
 }
 
@@ -56,7 +56,7 @@ makenew () {
   mk_user="pureskillgg"
   mk_pkg="@pureskillgg/${mk_slug}"
 
-  sed_delete README.md '9,102d'
+  sed_delete README.md '9,101d'
   sed_insert README.md '9i' 'TODO'
 
   find_replace "s/\"version\": \".*\"/\"version\": \"0.0.0\"/g"

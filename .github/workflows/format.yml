@@ -13,6 +13,7 @@ on:
 jobs:
   fix:
     runs-on: ubuntu-20.04
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -29,35 +30,12 @@ jobs:
           git_committer_email: ${{ secrets.GIT_USER_EMAIL }}
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - name: Setup
+        uses: ./.github/actions/setup
         with:
-          node-version: '14'
-          registry-url: https://npm.pkg.github.com
-          scope: '@${{ github.repository_owner }}'
-      - name: Get yarn cache directory
-        id: yarn-cache-dir
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Yarn cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: Node modules cache
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --non-interactive
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+          node_auth_token: ${{ secrets.GH_TOKEN }}
       - name: Format
-        run: yarn run format
+        run: npm run format
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

@@ -11,7 +11,7 @@ Bootstrap a new JavaScript module in five minutes or less.
 ### Features
 
 - [Node.js]'s [npm] package structure.
-- Fast, reliable, and secure dependency management with [Yarn].
+- Package management with [npm].
 - Examples with configurable options and arguments powered by [examplr].
 - Published [documentation.js] to [GitHub Pages].
 - Linting with the [JavaScript Standard Style] using [ESLint].
@@ -34,7 +34,6 @@ Bootstrap a new JavaScript module in five minutes or less.
 [Node.js]: https://nodejs.org/
 [Prettier]: https://prettier.io/
 [Shields.io]: https://shields.io/
-[Yarn]: https://yarnpkg.com/
 [documentation.js]: https://documentation.js.org/
 [examplr]: https://github.com/meltwater/node-examplr
 [npm]: https://www.npmjs.com/
@@ -71,7 +70,7 @@ Bootstrap a new JavaScript module in five minutes or less.
    then publish the initial version of the package with
    ```
    $ nvm install
-   $ yarn install
+   $ npm install
    $ npm version patch
    ```
 
@@ -106,17 +105,10 @@ and summarized under [Releases].
 Add this as a dependency to your project using [npm] with
 
 ```
-$ npm install @pureskillgg/makenew-jsmodule
-```
-
-or using [Yarn] with
-
-```
-$ yarn add @pureskillgg/makenew-jsmodule
+$ npm install @makenew/jsmodule
 ```
 
 [npm]: https://www.npmjs.com/
-[Yarn]: https://yarnpkg.com/
 
 ## Development and Testing
 
@@ -126,21 +118,21 @@ $ yarn add @pureskillgg/makenew-jsmodule
 $ git clone https://github.com/pureskillgg/makenew-jsmodule.git
 $ cd makenew-jsmodule
 $ nvm install
-$ yarn install
+$ npm install
 ```
 
 Run the command below in a separate terminal window:
 
 ```
-$ yarn run test:watch
+$ npm run test:watch
 ```
 
 Primary development tasks are defined under `scripts` in `package.json`
-and available via `yarn run`.
+and available via `npm run`.
 View them with
 
 ```
-$ yarn run
+$ npm run
 ```
 
 ### Source code
@@ -156,7 +148,7 @@ $ git clone git@github.com:pureskillgg/makenew-jsmodule.git
 
 ### Requirements
 
-You will need [Node.js] with [npm], [Yarn], and a [Node.js debugging] client.
+You will need [Node.js] with [npm] and a [Node.js debugging] client.
 
 Be sure that all commands run under the correct Node version, e.g.,
 if using [nvm], install the correct version with
@@ -174,7 +166,7 @@ $ nvm use
 Install the development dependencies with
 
 ```
-$ yarn install
+$ npm install
 ```
 
 [Node.js]: https://nodejs.org/
