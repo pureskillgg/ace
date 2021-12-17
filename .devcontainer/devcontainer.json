@@ -13,5 +13,6 @@
     "esbenp.prettier-vscode"
   ],
   "postCreateCommand": "npm install",
+  "forwardPorts": [4001],
   "remoteUser": "node"
 }
