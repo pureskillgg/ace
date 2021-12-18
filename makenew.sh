@@ -59,8 +59,7 @@ makenew () {
   sed_delete README.md '9,101d'
   sed_insert README.md '9i' 'TODO'
 
-  find_replace "s/\"version\": \".*\"/\"version\": \"0.0.0\"/g"
-  find_replace "s/0\.0\.0\.\.\./0.0.1.../g"
+  find_replace "s/^  \"version\": \".*\"/  \"version\": \"0.0.0\"/g"
   find_replace "s/JavaScript Module Package Skeleton/${mk_title}/g"
   find_replace "s/Package skeleton for a JavaScript module\./${mk_description}/g"
   find_replace "s|@pureskillgg/makenew-jsmodule|${mk_pkg}|g"
