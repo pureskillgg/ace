@@ -2,14 +2,8 @@
 name: main
 
 on:
-  push:
-    branches:
-      - master
-      - 'ver/**'
-  pull_request:
-    branches:
-      - master
-      - 'ver/**'
+  - push
+  - pull_request
 
 jobs:
   test:
@@ -27,7 +21,6 @@ jobs:
         uses: ./.github/actions/setup
         with:
           node_version: ${{ matrix.node }}
-          node_auth_token: ${{ secrets.GH_TOKEN }}
       - name: Test
         run: npm test
   lint:
@@ -45,6 +38,5 @@ jobs:
         uses: ./.github/actions/setup
         with:
           node_version: ${{ matrix.node }}
-          node_auth_token: ${{ secrets.GH_TOKEN }}
       - name: Lint
         run: npm run lint
