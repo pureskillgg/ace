@@ -165,8 +165,7 @@ _GitHub Actions should already be configured: this section is for reference only
 
 The following repository secrets must be set on [GitHub Actions]:
 
-- `NPM_TOKEN`: npm token for installing and publishing packages.
-- `GH_TOKEN`: A personal access token to read and write packages.
+- `NPM_TOKEN`: npm token for publishing packages.
 
 These must be set manually.
 
