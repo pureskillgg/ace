@@ -15,10 +15,10 @@
   "homepage": "https://github.com/pureskillgg/ace",
   "bugs": "https://github.com/pureskillgg/ace/issues",
   "repository": "pureskillgg/ace",
-  "license": "SEE LICENSE IN LICENSE.txt",
+  "license": "MIT",
   "author": {
     "name": "PureSkill.gg",
-    "email": "secure@pureskill.gg"
+    "email": "contact@pureskill.gg"
   },
   "files": [
     "package-lock.json",

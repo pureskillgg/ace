@@ -1,5 +1,7 @@
 # AWS Config Executor
 
+[![npm](https://img.shields.io/npm/v/@pureskillgg/ace.svg)](https://www.npmjs.com/package/@pureskillgg/ace)
+[![docs](https://img.shields.io/badge/docs-online-informational)](https://pureskillgg.github.io/ace/)
 [![GitHub Actions](https://github.com/pureskillgg/ace/workflows/main/badge.svg)](https://github.com/pureskillgg/ace/actions)
 
 Loads and caches configuration and secrets from AWS services.
@@ -163,6 +165,7 @@ _GitHub Actions should already be configured: this section is for reference only
 
 The following repository secrets must be set on [GitHub Actions]:
 
+- `NPM_TOKEN`: npm token for installing and publishing packages.
 - `GH_TOKEN`: A personal access token to read and write packages.
 
 These must be set manually.
@@ -199,7 +202,7 @@ To submit a patch:
 
 ## License
 
-This npm package is Copyright (c) 2019-2021 FPS Critic, Inc.
+This npm package is licensed under the MIT license.
 
 ## Warranty
 
