@@ -16,7 +16,6 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
         with:
-          node_version: '14'
           node_auth_token: ${{ secrets.GH_TOKEN }}
       - name: Publish
         uses: JS-DevTools/npm-publish@v1
