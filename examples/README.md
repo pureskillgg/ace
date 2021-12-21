@@ -25,19 +25,19 @@ Override any option with the corresponding environment variable:
 List all runnable examples with
 
 ```
-$ yarn run example
+$ npm run example
 ```
 
 Run provided examples with, e.g.,
 
 ```
-$ yarn run example get-local-config
+$ npm run example get-local-config
 ```
 
 Pass arguments to examples with
 
 ```
-$ yarn run example get-local-config foo
+$ npm run example get-local-config foo
 ```
 
 #### Debugging examples
@@ -45,7 +45,7 @@ $ yarn run example get-local-config foo
 Debug examples with, e.g.,
 
 ```
-$ yarn run example:inspect get-local-config
+$ npm run example:inspect get-local-config
 ```
 
 For examples which run a single process and then exit,

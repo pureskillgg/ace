@@ -3,14 +3,16 @@
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
-      "VARIANT": "14"
+      "VARIANT": "16"
     }
   },
   "extensions": [
+    "ms-vsliveshare.vsliveshare",
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
     "esbenp.prettier-vscode"
   ],
-  "postCreateCommand": "yarn install",
+  "postCreateCommand": "npm install",
+  "forwardPorts": [4001],
   "remoteUser": "node"
 }

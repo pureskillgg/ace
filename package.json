@@ -21,7 +21,7 @@
     "email": "secure@pureskill.gg"
   },
   "files": [
-    "yarn.lock",
+    "package-lock.json",
     "index.js",
     "lib",
     "data",
@@ -49,7 +49,8 @@
     "report": "nyc report"
   },
   "engines": {
-    "node": ">=14.15.0"
+    "node": ">=14.15.0",
+    "npm": ">= 8.1.0"
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.11.0",
