@@ -28,7 +28,7 @@
     "docs"
   ],
   "scripts": {
-    "test": "nyc ava",
+    "test": "c8 ava",
     "pretest": "node index.js",
     "test:update": "ava --update-snapshots",
     "test:watch": "ava --watch",
@@ -46,7 +46,7 @@
     "format:js": "eslint --ignore-path .gitignore --fix --ext .js .",
     "docs": "documentation serve --watch --github 'lib/**/*.doc.js'",
     "docs:build": "documentation build --format html --github --output .docs 'lib/**/*.doc.js'",
-    "report": "nyc report"
+    "report": "c8 report"
   },
   "engines": {
     "node": ">=14.15.0",
@@ -58,6 +58,7 @@
     "@babel/eslint-parser": "^7.13.14",
     "@meltwater/examplr": "^6.0.0",
     "ava": "^4.0.1",
+    "c8": "^7.11.0",
     "documentation": "^13.2.5",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^8.3.0",
@@ -66,7 +67,6 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^5.1.0",
     "npm-run-all": "^4.1.2",
-    "nyc": "^15.0.0",
     "prettier": "^2.3.0"
   }
 }
