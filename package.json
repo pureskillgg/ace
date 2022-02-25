@@ -55,14 +55,14 @@
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.11.0",
     "@aws-sdk/client-ssm": "^3.11.0",
-    "@meltwater/mlabs-logger": "^8.0.0",
-    "@meltwater/phi": "^4.0.0",
+    "@meltwater/mlabs-logger": "^9.1.1",
+    "@meltwater/phi": "^5.0.0",
     "cache-manager": "^3.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/eslint-parser": "^7.13.14",
-    "@meltwater/examplr": "^6.0.0",
+    "@meltwater/examplr": "^7.0.0",
     "ava": "^4.0.1",
     "c8": "^7.11.0",
     "documentation": "^13.2.5",
