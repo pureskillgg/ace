@@ -56,7 +56,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/eslint-parser": "^7.13.14",
-    "@meltwater/examplr": "^6.0.0",
+    "@meltwater/examplr": "^7.0.0",
     "ava": "^4.0.1",
     "c8": "^7.11.0",
     "documentation": "^13.2.5",
