@@ -1,7 +1,7 @@
 # AWS Config Executor
 
 [![npm](https://img.shields.io/npm/v/@pureskillgg/ace.svg)](https://www.npmjs.com/package/@pureskillgg/ace)
-[![docs](https://img.shields.io/badge/docs-online-informational)](https://docs.pureskill.gg/ace/)
+[![docs](https://img.shields.io/badge/docs-online-informational)](https://dev.pureskill.gg/ace/)
 [![GitHub Actions](https://github.com/pureskillgg/ace/workflows/main/badge.svg)](https://github.com/pureskillgg/ace/actions)
 
 Loads and caches configuration and secrets from AWS services.
