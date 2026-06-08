@@ -8,62 +8,62 @@ on:
 
 jobs:
   npm:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
       - name: Setup
         uses: ./.github/actions/setup
         with:
           node_version: '14'
       - name: Publish
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v4
         with:
           access: public
           token: ${{ secrets.NPM_TOKEN }}
   github:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
       - name: Setup
         uses: ./.github/actions/setup
       - name: Publish
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v4
         with:
           access: public
           token: ${{ secrets.GITHUB_TOKEN }}
           registry: https://npm.pkg.github.com
   docs:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GH_TOKEN }}
       - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v3
+        uses: crazy-max/ghaction-import-gpg@v7
         id: import_gpg
         with:
-          git-user-signingkey: true
-          git-commit-gpgsign: true
-          git-committer-name: ${{ secrets.GIT_USER_NAME }}
-          git-committer-email: ${{ secrets.GIT_USER_EMAIL }}
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_committer_name: ${{ secrets.GIT_USER_NAME }}
+          git_committer_email: ${{ secrets.GIT_USER_EMAIL }}
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
       - name: Setup
         uses: ./.github/actions/setup
       - name: Get version
         id: version
         run: |
-          echo "::set-output name=current::$(jq -r '.version' package.json)"
+          echo "current=$(jq -r '.version' package.json)" >> "$GITHUB_OUTPUT"
       - name: Documentation
         run: npm run docs:build
       - name: Publish ${{ steps.version.outputs.current }}
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.GH_TOKEN }}
           publish_dir: .docs
@@ -72,7 +72,7 @@ jobs:
           user_name: ${{ secrets.GIT_USER_NAME }}
           user_email: ${{ secrets.GIT_USER_EMAIL }}
       - name: Publish latest
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.GH_TOKEN }}
           publish_dir: .docs

@@ -1,4 +1,4 @@
-import { equals } from '@meltwater/phi'
+import { equals } from '@pureskillgg/phi'
 import { matchers } from 'testdouble'
 
 const isAwsSdkCommand = matchers.create({
