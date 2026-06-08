@@ -55,12 +55,12 @@
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.11.0",
     "@aws-sdk/client-ssm": "^3.11.0",
-    "@meltwater/mlabs-logger": "^9.1.1",
-    "@meltwater/phi": "^5.0.0",
+    "@pureskillgg/mlabs-logger": "^9.1.1",
+    "@pureskillgg/phi": "^5.0.0",
     "cache-manager": "^3.4.0"
   },
   "devDependencies": {
-    "@meltwater/examplr": "^7.0.0",
+    "@pureskillgg/examplr": "^7.0.0",
     "ava": "^4.0.1",
     "c8": "^7.11.0",
     "documentation": "^13.2.5",
