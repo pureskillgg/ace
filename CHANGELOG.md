@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## 2.0.1 / 2026-06-08
+
+- Version bump; no code changes.
+
+## 2.0.0 / 2026-06-08
+
+### Changed
+
+- Migrate `@meltwater/*` dependencies to their `@pureskillgg/*` re-publications
+  (`mlabs-logger`, `phi`, and dev `examplr`).
+
+### Removed
+
+- Drop support for Node.js v12.
+
 ## 1.6.0 / 2022-02-25
 
 ### Changed
