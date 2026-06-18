@@ -6,7 +6,60 @@
 
 Loads and caches configuration and secrets from AWS services.
 
-## Description
+`@pureskillgg/ace` ("AWS Config Executor") is a small Node.js ESM library that
+resolves, validates, parses, and caches application configuration and secrets
+from [AWS SSM Parameter Store], [AWS Secrets Manager], environment variables, and
+in-memory local values. A service declares the parameters it needs and calls a
+single async `getConfig`; ace fetches them all in parallel, caches them, logs the
+resolution, and hands back a plain object of resolved values.
+
+## What it does
+
+A caller declares a map of named parameters and calls `getConfig`:
+
+```js
+import { ssmString, secretsManagerString, getConfig } from '@pureskillgg/ace'
+
+const parameters = {
+  bucketArn: ssmString('/app/bucket_arn'),
+  apiKey: secretsManagerString('/app/api_key')
+}
+
+const { bucketArn, apiKey } = await getConfig({ parameters })
+```
+
+`getConfig({ parameters, aliases, cache, log, ...providerDependencies })`
+(`lib/get-config.js`) fetches every entry in parallel (`Promise.all` over
+`Object.entries(parameters)`) and returns an object of resolved values keyed by
+the caller's own names. Each fetch is:
+
+- **Cached** through [cache-manager] (`cache.wrap(name, …)`). The default cache is
+  in-memory and lives only for one call; to persist values across (e.g.) lambda
+  invocations, pass a shared `cache` created in the outer scope. Note the cache
+  key is the caller-supplied object key (`name`), **not** the resolved SSM/secret
+  path or the alias — two parameters that share a name on a shared cache will
+  collide.
+- **Logged** via [@pureskillgg/mlabs-logger] ([Pino]) with a child logger carrying
+  `paramName` / `paramAlias` / `paramKey` / `paramProvider`. Sensitive values
+  (Secrets Manager) are redacted as `[Redacted]` in debug logs. On failure each
+  fetch logs `log.error({ err }, 'fail')` and rethrows.
+
+Each parameter is a `Parameter` instance (`lib/parameter.js`) configured with a
+provider class, an optional `fallback`, a `parser` (default identity), a
+`validator` (default always-true), and an `isSensitive` flag. On `get(key)` it
+lazily instantiates the provider (`initProvider`, passed the provider
+dependencies from `getConfig` such as `ssmClient` / `secretsManagerClient` /
+`env` / `localParameters`), fetches the raw value, applies the fallback when the
+provider returns nothing, runs the parser (throwing `ParameterParsingError`,
+code `err_parameter_parse`, on failure), then runs the validator (throwing
+`ParameterValidationError`, code `err_parameter_validate`, on failure).
+
+**Key resolution and aliases.** An explicit `parameter.alias` wins; otherwise the
+parameter name is looked up in the `aliases` map (commonly `{ ...process.env }`).
+This enables indirection such as `BUCKET_ARN_SSM_PATH` -> the actual SSM path,
+so deployment config can point at parameters without code changes.
+
+### Description
 
 - Resolve configuration from multiple source:
   - [AWS SSM parameter store].
@@ -20,7 +73,93 @@ Loads and caches configuration and secrets from AWS services.
 [AWS Secrets Manager]: https://aws.amazon.com/secrets-manager/
 [Pino]: https://getpino.io/
 [mlabs-logger]: https://github.com/meltwater/mlabs-logger
+[@pureskillgg/mlabs-logger]: https://www.npmjs.com/package/@pureskillgg/mlabs-logger
 [cache-manager]: https://github.com/BryanDonovan/node-cache-manager
+
+## Pipeline role
+
+ace is a shared infrastructure utility, **not** a pipeline stage. It is published
+to npm and imported by other PureSkill.gg Node backend services (e.g. `glhf`,
+`oauthjs`, and the lambdas behind demo/replay/match processing and automatch) so
+they can load their runtime config and secrets — bucket ARNs, API keys,
+Steam/FACEIT credentials, polling intervals such as automatch `min_interval`, and
+so on — from AWS at boot. It produces no domain data of its own; it sits
+underneath nearly every Node service as the config-resolution layer.
+
+It owns no cloud infrastructure. There is no `serverless.yml`, no Terraform, and
+no CDK in this repo. At runtime it only **reads** from two AWS services via AWS
+SDK v3 clients, using resource names that the consuming application supplies at
+call time.
+
+## Exported helpers, providers, and resources
+
+### Entry point
+
+| Export | Source | Role |
+| --- | --- | --- |
+| `getConfig` | `lib/get-config.js` | Async. Resolves a map of named `Parameter`s in parallel (cached + logged) and returns an object of resolved values keyed by caller name. |
+| `Parameter` | `lib/parameter.js` | Core abstraction wrapping a provider with `fallback`, `parser`, `validator`, and `isSensitive`. Lazily instantiates its provider, fetches, parses, and validates. Throws `ParameterValidationError` / `ParameterParsingError`. |
+
+### Factory helpers (`lib/factories.js`)
+
+Each factory wires a provider plus an appropriate validator/parser. By convention
+parameters are referenced by the caller's `camelCase` object key; secret-bearing
+helpers set `isSensitive: true` so values are redacted in logs.
+
+| Factory | Provider | Validation / parsing |
+| --- | --- | --- |
+| `ssmString(name, fallback)` | `SsmProvider` | non-empty string |
+| `ssmNonNegativeInt(name, fallback)` | `SsmProvider` | `Number(v)`, must be a non-negative integer |
+| `secretsManagerString(name, fallback)` | `SecretsManagerProvider` | non-empty string, **sensitive** |
+| `secretsManagerJson(name, fallback)` | `SecretsManagerProvider` | `JSON.parse`d, **sensitive** |
+| `envString(name, fallback)` | `EnvProvider` | non-empty string from `process.env` (sets `alias == name`) |
+| `localString(name, fallback)` | `LocalProvider` | non-empty string from the in-memory `localParameters` object |
+| `localNonNegativeInt(name, fallback)` | `LocalProvider` | `Number(v)`, must be a non-negative integer |
+
+### Providers (`lib/providers/`)
+
+| Provider | Source | Backing call |
+| --- | --- | --- |
+| `SsmProvider` | `lib/providers/ssm.js` | `@aws-sdk/client-ssm` `GetParameterCommand({ Name })`; returns `Parameter.Value`; swallows `ParameterNotFound` -> `undefined`. |
+| `SecretsManagerProvider` | `lib/providers/secrets-manager.js` | `@aws-sdk/client-secrets-manager` `GetSecretValueCommand({ SecretId })`; returns `SecretString`; swallows `ResourceNotFoundException` -> `undefined`. |
+| `LocalProvider` | `lib/providers/local.js` | Reads from an in-memory object (validates the key is a non-empty string). |
+| `EnvProvider` | `lib/providers/env.js` | Subclass of `LocalProvider` scoped to `process.env`. |
+
+### AWS resources touched (read-only, caller-supplied)
+
+ace hardcodes **no** literal ARNs or parameter names — it never owns a resource.
+The names below are supplied by the consuming app at call time:
+
+- **SSM Parameter Store** — read via `GetParameterCommand`. The `Name` comes from
+  `ssmString` / `ssmNonNegativeInt`, optionally indirected through an env-var
+  alias. A missing parameter resolves to `undefined`.
+- **Secrets Manager** — read via `GetSecretValueCommand`. The `SecretId` comes
+  from `secretsManagerString` / `secretsManagerJson`. Values are flagged
+  sensitive and redacted in logs. A missing secret resolves to `undefined`.
+
+## Logs and observability
+
+ace deploys nothing, so it has no CloudWatch log group, DLQ, Sentry project, or
+Step Functions state of its own. **All of its output appears in the logs of the
+host service that imports it.**
+
+- **Normal logs**: ace logs through the [Pino] logger passed in as `log` (or a
+  default [@pureskillgg/mlabs-logger] logger). Each parameter resolution emits a
+  child-logger line tagged with `paramName`, `paramAlias`, `paramKey`, and
+  `paramProvider`. Visibility depends entirely on the host's `LOG_LEVEL` —
+  per-parameter detail (including the redacted `[Redacted]` value previews) is at
+  `debug`.
+- **Error logs**: failures are plain JS exceptions, not AWS-native failure
+  channels. Each fetch's `try/catch` logs `log.error({ err }, 'fail')` and then
+  rethrows; `getConfig` runs the fetches under `Promise.all`, so any rejection
+  (e.g. an SSM/Secrets Manager `AccessDenied` or throttling error, or a
+  `ParameterValidationError` / `ParameterParsingError`) rejects the whole
+  `getConfig`. Only `ParameterNotFound` (SSM) and `ResourceNotFoundException`
+  (Secrets Manager) are swallowed to `undefined`.
+- **Where to look**: in the CloudWatch log group of the consuming lambda/service
+  (config typically resolves at boot, so look at the start of an invocation), or
+  in CI output when a build runs the consumer. There is no ace-specific log group
+  to search.
 
 ## Basic Usage
 
