@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## 3.0.0
+
+### Changed
+
+- **Breaking:** Require Node.js 22+ — `engines.node` is now `>=22.0.0`,
+  dropping support for Node versions below 22.
+- Upgrade the development toolchain to Node.js 22: `.nvmrc`, the CI setup
+  action default, and the devcontainer now target Node 22. The CI test/lint
+  matrix runs on Node 20 and 22 (dropping EOL 14/16).
+
 ## 2.0.1 / 2026-06-08
 
 - Version bump; no code changes.
