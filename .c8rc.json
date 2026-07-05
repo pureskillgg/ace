@@ -3,7 +3,8 @@
     "**/index.js",
     "package/**/*.js",
     "examples/**/*.js",
-    "**/*.spec.js"
+    "**/*.spec.js",
+    "**/*.doc.js"
   ],
   "reporter": ["html", "lcov", "text"]
 }
