@@ -5,6 +5,12 @@ on:
   push:
     tags:
       - v*
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+  packages: write
 
 jobs:
   npm:
@@ -17,11 +23,17 @@ jobs:
         uses: ./.github/actions/setup
         with:
           node_version: '22'
-      - name: Publish
-        uses: JS-DevTools/npm-publish@v4
-        with:
-          access: public
-          token: ${{ secrets.NPM_TOKEN }}
+      - name: Update npm for OIDC trusted publishing
+        run: npm install -g npm@latest
+      - name: Check version
+        id: version
+        run: |
+          echo "name=$(jq -r '.name' package.json)" >> $GITHUB_OUTPUT
+          echo "current=$(jq -r '.version' package.json)" >> $GITHUB_OUTPUT
+          echo "published=$(npm view $(jq -r '.name' package.json)@$(jq -r '.version' package.json) version 2>/dev/null || echo '')" >> $GITHUB_OUTPUT
+      - name: Publish ${{ steps.version.outputs.name }}@${{ steps.version.outputs.current }}
+        if: steps.version.outputs.current != steps.version.outputs.published
+        run: npm publish --access public
   github:
     runs-on: ubuntu-latest
     timeout-minutes: 30
