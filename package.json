@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.js",
   "exports": {
-    "import": "./index.js"
+    "import": "./index.js",
+    "default": "./index.js"
   },
   "module": "index.js",
   "sideEffects": false,
@@ -14,7 +15,10 @@
   ],
   "homepage": "https://github.com/pureskillgg/ace",
   "bugs": "https://github.com/pureskillgg/ace/issues",
-  "repository": "pureskillgg/ace",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pureskillgg/ace.git"
+  },
   "license": "MIT",
   "author": {
     "name": "PureSkill.gg",
@@ -34,44 +38,41 @@
     "test:watch": "ava --watch",
     "test:debug": "ava debug --break",
     "lint": "npm-run-all --parallel lint:*",
-    "lint:prettier": "prettier --check --ignore-path .gitignore '**/*.(js|cjs|mjs|json|yml|yaml|graphql)'",
-    "lint:js": "eslint --ignore-path .gitignore --ext .js .",
+    "lint:js": "eslint .",
+    "lint:prettier": "prettier --check --ignore-path .gitignore '**/*.{js,cjs,mjs,json,yml,yaml,graphql}'",
     "lint:docs": "documentation lint 'lib/**/*.doc.js'",
+    "prepublishOnly": "npm-run-all --parallel lint test",
     "preversion": "npm-run-all --parallel lint test",
     "postversion": "git push --follow-tags",
     "example": "node examples",
     "example:inspect": "node --inspect examples",
     "format": "npm-run-all --parallel format:*",
-    "preformat": "prettier --write --ignore-path .gitignore '**/*.(js|cjs|mjs|json|yml|yaml|graphql)'",
-    "format:js": "eslint --ignore-path .gitignore --fix --ext .js .",
+    "preformat": "prettier --write --ignore-path .gitignore '**/*.{js,cjs,mjs,json,yml,yaml,graphql}'",
+    "format:js": "eslint --fix .",
     "docs": "documentation serve --watch --github 'lib/**/*.doc.js'",
     "docs:build": "documentation build --format html --github --output .docs 'lib/**/*.doc.js'",
     "report": "c8 report"
   },
   "engines": {
-    "node": ">=22.0.0",
-    "npm": ">= 8.1.0"
+    "node": ">=22.0.0"
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.11.0",
     "@aws-sdk/client-ssm": "^3.11.0",
-    "@pureskillgg/mlabs-logger": "^9.1.1",
-    "@pureskillgg/phi": "^5.0.0",
-    "cache-manager": "^3.4.0"
+    "@pureskillgg/mlabs-logger": "^10.0.0",
+    "@pureskillgg/phi": "^6.0.0",
+    "cache-manager": "^3.6.3"
   },
   "devDependencies": {
-    "@pureskillgg/examplr": "^7.0.0",
-    "ava": "^4.0.1",
-    "c8": "^7.11.0",
-    "documentation": "^13.2.5",
-    "eslint": "^8.9.0",
-    "eslint-config-prettier": "^8.4.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "npm-run-all": "^4.1.2",
-    "prettier": "^2.3.0",
-    "testdouble": "^3.16.1"
+    "@pureskillgg/examplr": "^8.0.1",
+    "ava": "^8.0.1",
+    "c8": "^11.0.0",
+    "documentation": "^14.0.3",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "neostandard": "^0.13.0",
+    "npm-run-all2": "^9.0.2",
+    "prettier": "^3.9.4",
+    "testdouble": "^3.20.2"
   }
 }
