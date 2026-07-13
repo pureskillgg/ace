@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## 3.1.0
+
+### Changed
+
+- Bump internal `@pureskillgg/*` dependencies to their current majors.
+- Modernize the development toolchain (ESLint 9 flat config).
+
+## 3.0.1
+
+- Version bump; no code changes.
+
 ## 3.0.0
 
 ### Changed
