@@ -120,7 +120,7 @@ helpers set `isSensitive: true` so values are redacted in logs.
 
 | Provider | Source | Backing call |
 | --- | --- | --- |
-| `SsmProvider` | `lib/providers/ssm.js` | `@aws-sdk/client-ssm` `GetParameterCommand({ Name })`; returns `Parameter.Value`; swallows `ParameterNotFound` -> `undefined`. |
+| `SsmProvider` | `lib/providers/ssm.js` | `@aws-sdk/client-ssm` `GetParameterCommand({ Name, WithDecryption: true })`; returns `Parameter.Value` (decrypted for SecureString); swallows `ParameterNotFound` -> `undefined`. |
 | `SecretsManagerProvider` | `lib/providers/secrets-manager.js` | `@aws-sdk/client-secrets-manager` `GetSecretValueCommand({ SecretId })`; returns `SecretString`; swallows `ResourceNotFoundException` -> `undefined`. |
 | `LocalProvider` | `lib/providers/local.js` | Reads from an in-memory object (validates the key is a non-empty string). |
 | `EnvProvider` | `lib/providers/env.js` | Subclass of `LocalProvider` scoped to `process.env`. |
