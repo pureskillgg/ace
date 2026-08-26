@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
-- Harden the deploy workflows: pass the version input through `env:` instead of interpolating it into the shell line; give the dispatch and tag workflows readable run titles; serialize deploys with a concurrency group and give every job a timeout.
+- Harden the deploy workflows: pass the version input through `env:` instead of interpolating it into the shell line; give the dispatch and tag workflows readable run titles; give every job a timeout.
 
 - GitHub Actions updated to Node 24 runtimes: `actions/checkout` v5 to v7; `actions/setup-node` v5 to v6.
 
