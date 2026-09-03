@@ -9,16 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
-- Harden the deploy workflows: pass the version input through `env:` instead of interpolating it into the shell line; give the dispatch and tag workflows readable run titles; give every job a timeout.
+- Harden the deploy workflows.
 
-- GitHub Actions updated to Node 24 runtimes: `actions/checkout` v5 to v7; `actions/setup-node` v5 to v6.
+- Update GitHub Actions to Node 24 runtimes.
 
 ## 3.1.1
 
 ### Fixed
 
-- `ssmString` now decrypts SecureString parameters (`WithDecryption: true`);
-  previously they resolved to the raw KMS ciphertext.
+- `ssmString` decryption of SecureString parameters.
 
 ## 3.1.0
 
@@ -35,11 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
-- **Breaking:** Require Node.js 22+ — `engines.node` is now `>=22.0.0`,
-  dropping support for Node versions below 22.
-- Upgrade the development toolchain to Node.js 22: `.nvmrc`, the CI setup
-  action default, and the devcontainer now target Node 22. The CI test/lint
-  matrix runs on Node 20 and 22 (dropping EOL 14/16).
+- (**Breaking**) Require Node.js 22+.
+- Upgrade the development toolchain to Node.js 22.
 
 ## 2.0.1 / 2026-06-08
 
@@ -49,8 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
-- Migrate `@meltwater/*` dependencies to their `@pureskillgg/*` re-publications
-  (`mlabs-logger`, `phi`, and dev `examplr`).
+- Migrate `@meltwater/*` dependencies to their `@pureskillgg/*` re-publications.
 
 ### Removed
 
