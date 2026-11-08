@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@pureskillgg/ace.svg)](https://www.npmjs.com/package/@pureskillgg/ace)
 [![docs](https://img.shields.io/badge/docs-online-informational)](https://dev.pureskill.gg/ace/)
-[![GitHub Actions](https://github.com/pureskillgg/ace/workflows/main/badge.svg)](https://github.com/pureskillgg/ace/actions)
+[![GitHub Actions](https://github.com/pureskillgg/ace/actions/workflows/main.yml/badge.svg)](https://github.com/pureskillgg/ace/actions)
 
 Loads and caches configuration and secrets from AWS services.
 
@@ -296,7 +296,7 @@ Publishing may be triggered using on the web
 using a [workflow_dispatch on GitHub Actions].
 
 [npm-version]: https://docs.npmjs.com/cli/version
-[workflow_dispatch on GitHub Actions]: https://github.com/pureskillgg/ace/actions?query=workflow%3Aversion
+[workflow_dispatch on GitHub Actions]: https://github.com/pureskillgg/ace/actions/workflows/version.yml
 
 ## GitHub Actions
 
