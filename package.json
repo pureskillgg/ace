@@ -43,7 +43,7 @@
     "lint:docs": "documentation lint 'lib/**/*.doc.js'",
     "prepublishOnly": "npm-run-all --parallel lint test",
     "preversion": "npm-run-all --parallel lint test",
-    "postversion": "git push --follow-tags",
+    "postversion": "git push --atomic --follow-tags",
     "example": "node examples",
     "example:inspect": "node --inspect examples",
     "format": "npm-run-all --parallel format:*",

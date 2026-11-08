@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- CI runs on pushes and PRs to master and `ver/**` only. Rename the workflows as they show on the Actions tab (CI, Format, Cut version, Publish) with readable run titles; one version cut at a time, with a required version input; the version tag is pushed only together with its branch (`git push --atomic`); format skips fork and Dependabot PRs.
 - Pin workflow runners to `ubuntu-24.04`.
 - Harden the deploy workflows.
 - Update GitHub Actions to Node.js 24 runtimes.
